@@ -23,8 +23,14 @@ let currentImageData = null;
 
 // 이벤트 리스너 등록
 document.addEventListener('DOMContentLoaded', function() {
-    cameraBtn.addEventListener('click', () => fileInput.click());
-    galleryBtn.addEventListener('click', () => fileInput.click());
+    cameraBtn.addEventListener('click', () => {
+        fileInput.setAttribute('capture', 'environment');
+        fileInput.click();
+    });
+    galleryBtn.addEventListener('click', () => {
+        fileInput.removeAttribute('capture');
+        fileInput.click();
+    });
     fileInput.addEventListener('change', handleFileSelect);
     analyzeBtn.addEventListener('click', analyzeImage);
     copyBtn.addEventListener('click', copyResults);
@@ -311,11 +317,6 @@ function resetApp() {
 // 모바일 최적화
 function isMobile() {
     return /Android|webOS|iPhone|iPad|iPod|BlackBerry|IEMobile|Opera Mini/i.test(navigator.userAgent);
-}
-
-// 모바일에서 카메라 접근 최적화
-if (isMobile()) {
-    fileInput.setAttribute('capture', 'environment');
 }
 
 // 에러 처리 개선
