@@ -1,0 +1,96 @@
+<!DOCTYPE html>
+<html lang="ko">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>칼로리M - 음식 칼로리 계산기</title>
+    <link rel="stylesheet" href="style.css">
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+KR:wght@300;400;500;700&display=swap" rel="stylesheet">
+</head>
+<body>
+    <div class="container">
+        <header>
+            <h1>🍽️ 칼로리M</h1>
+            <p>사진을 찍어서 칼로리를 계산해보세요!</p>
+        </header>
+
+        <!-- 샘플 이미지 섹션 -->
+        <section class="sample-images">
+            <h2>샘플 이미지</h2>
+            <div class="image-grid">
+                <div class="sample-item" data-image="images/menu1.jpg">
+                    <img src="images/menu1.jpg" alt="김치찌개">
+                    <p>김치찌개</p>
+                </div>
+                <div class="sample-item" data-image="images/menu2.jpg">
+                    <img src="images/menu2.jpg" alt="스파게티">
+                    <p>스파게티</p>
+                </div>
+                <div class="sample-item" data-image="images/menu3.jpg">
+                    <img src="images/menu3.jpg" alt="햄버거">
+                    <p>햄버거</p>
+                </div>
+                <div class="sample-item" data-image="images/menu4.jpg">
+                    <img src="images/menu4.jpg" alt="샌드위치">
+                    <p>샌드위치</p>
+                </div>
+            </div>
+        </section>
+
+        <!-- 카메라/갤러리 버튼 -->
+        <section class="upload-section">
+            <div class="upload-buttons">
+                <button id="cameraBtn" class="btn btn-primary">
+                    📷 사진 촬영
+                </button>
+                <button id="galleryBtn" class="btn btn-secondary">
+                    📁 갤러리 선택
+                </button>
+            </div>
+            <input type="file" id="fileInput" accept="image/*" capture="environment" style="display: none;">
+        </section>
+
+        <!-- 이미지 미리보기 -->
+        <section class="preview-section" id="previewSection" style="display: none;">
+            <h3>업로드된 사진</h3>
+            <div class="image-preview">
+                <canvas id="imageCanvas"></canvas>
+            </div>
+            <button id="analyzeBtn" class="btn btn-analyze">
+                🔍 칼로리 분석하기
+            </button>
+        </section>
+
+        <!-- 로딩 상태 -->
+        <section class="loading-section" id="loadingSection" style="display: none;">
+            <div class="loading-spinner"></div>
+            <p>AI가 음식을 분석하고 있습니다...</p>
+        </section>
+
+        <!-- 결과 섹션 -->
+        <section class="result-section" id="resultSection" style="display: none;">
+            <h3>분석 결과</h3>
+            <div class="result-content">
+                <div class="food-items" id="foodItems">
+                    <!-- 음식 항목들이 여기에 동적으로 추가됩니다 -->
+                </div>
+                <div class="total-calories">
+                    <h4>총 예상 칼로리</h4>
+                    <div class="calorie-display" id="totalCalories">0 kcal</div>
+                </div>
+                <div class="exercise-info" id="exerciseInfo">
+                    <!-- 운동 정보가 여기에 표시됩니다 -->
+                </div>
+            </div>
+            <div class="action-buttons">
+                <button id="copyBtn" class="btn btn-copy">📋 결과 복사</button>
+                <button id="resetBtn" class="btn btn-reset">🔄 다시 촬영하기</button>
+            </div>
+        </section>
+    </div>
+
+    <script src="script.js"></script>
+</body>
+</html> 
